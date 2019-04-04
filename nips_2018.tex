@@ -10,6 +10,7 @@
 \usepackage{wrapfig}
 \usepackage{caption}
 \usepackage{natbib}
+\usepackage{times}
 \captionsetup{font=footnotesize, belowskip=-10pt}
 
 % to compile a preprint version, e.g., for submission to arXiv, add
@@ -24,8 +25,8 @@
 
 \usepackage[utf8]{inputenc} % allow utf-8 input
 \usepackage[T1]{fontenc}    % use 8-bit T1 fonts
-\usepackage{hyperref}       % hyperlinks
-\usepackage{url}            % simple URL typesetting
+%\usepackage[hidelinks]{hyperref}       % hyperlinks
+%\usepackage{url}            % simple URL typesetting
 \usepackage{booktabs}       % professional-quality tables
 \usepackage{amsfonts}       % blackboard math symbols
 \usepackage{nth}
@@ -46,16 +47,16 @@
 %
 % Using \And between authors leaves it to LaTeX to determine where to
 % break the lines. Using \AND forces a line break at that point. So,
-% if LaTeX puts 3 of 4 authors names on the first line, and the lasthttps://www.overleaf.com/project/5afa537b3e116a7d28741d5c
+% if LaTeX puts 3 of 4 authors names on the first line, and the last
 % on the second line, try using \AND instead of \And before the third
 % author name.
 
 \author{
-  Eric Mitchell, Stefan Keselj,\\
-  Sergiy Popovych, Davit Buniatyan, and H. Sebastian Seung\\
-  Neuroscience Institute and
-  Computer Science Department\\
-  Princeton University, Princeton NJ 08544, USA
+  Eric Mitchell \qquad Stefan Keselj\\
+  Sergiy Popovych \qquad Davit Buniatyan \qquad H. Sebastian Seung\\
+  \qquad\\
+  Neuroscience Institute and Computer Science Department\\
+  Princeton University
 }
 
 \begin{document}
@@ -71,7 +72,7 @@ alignment than the image pyramids of SPyNet, a previous deep learning
 approach to coarse-to-fine alignment. Furthermore, self-supervision applies even without target values for the transform, unlike the strongly supervised SPyNet. We also show that our approach outperforms one-shot approaches to alignment, because the fine pathways in the latter approach may fail to contribute to
 alignment accuracy when displacements are large. As shown by previous one-shot approaches, good results from self-supervised learning require that the loss function additionally penalize non-smooth transforms. We demonstrate that
 "masking out" the penalty function near discontinuities leads to
-correct recovery of non-smooth transforms. Our claims are supported by empirical comparisons using images from serial section electron microscopy of brain tissue.\footnote{Since this paper was originally submitted for publication in 2018, many of its general ideas have been published by others (e.g. \citet{hui2018liteflownet}). We are releasing the paper to arXiv in its original form as the specific application to ssEM images is still novel and informative, and apologize for not updating references to the literature.}
+correct recovery of non-smooth transforms. Our claims are supported by empirical comparisons using images from serial section electron microscopy of brain tissue.\footnote{Since this paper was originally submitted for publication in 2018, many of its general ideas have been published by others (e.g. \citet{hui2018liteflownet}). We are releasing the paper to arXiv in its original form as the specific application to serial section EM images is still novel and informative.}
 \end{abstract}
 
 \section{Introduction}
@@ -293,12 +294,18 @@ Direct gradient-based optimization of Eq. (\ref{eq:LossFunctionStage}) tends to 
 We present a method of image alignment based on hierarchical siamese encoding learned in a self-supervised manner. We show that alignment based on such feature encoding outperforms pixel-based image alignment methods. During training, the nonsmoothness penalty is masked out around discontinuities, which enables the network to correct discontinuous image deformations during inference.  We also show that our approach outperforms one-shot approaches to alignment, because the fine pathways in the latter approach may fail to contribute to alignment accuracy when displacements are large.
 
 
-%\subsubsection*{Acknowledgments}
-
+\section*{Acknowledgments}
+We thank T. Macrina for helpful discussions. We thank our colleagues at the Allen Institute for Brain Science (A. Bodor, A. Bleckert, D. Bumbarger, N. M. da Costa, C. Reid) for the ssEM images that were used in this study. This research was supported by the Intelligence Advanced Research Projects Activity (IARPA) via Department of Interior/ Interior
+Business Center (DoI/IBC) contract number D16PC0005, NIH/NIMH (U01MH114824), NIH/NINDS (U19NS104648), NIH/NEI (R01EY027036, R01NS104926), and ARO (W911NF-12-1-0594).
+The U.S. Government is authorized to reproduce and
+distribute reprints for Governmental purposes notwithstanding any copyright annotation thereon.
+Disclaimer: The views and conclusions contained herein are those of the authors and should not be interpreted as
+necessarily representing the official policies or endorsements, either expressed or implied, of IARPA, DoI/IBC, or the
+U.S. Government.  
 
 %\pagebreak
 \bibliographystyle{plainnat}
-{\footnotesize\bibliography{seamless}}
+\bibliography{seamless}
 \newpage
 
 \appendix
